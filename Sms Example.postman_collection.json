@@ -1,0 +1,144 @@
+{
+	"info": {
+		"_postman_id": "254b05a8-c3c3-485d-a168-bd0331b519aa",
+		"name": "Sms Example",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40344868"
+	},
+	"item": [
+		{
+			"name": "Create Sms",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"recipient_phone\": \"905555555555\",\n    \"message\": \"Demo: Bekleyen mesaj #11\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api}}/{{version}}/sms",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"{{version}}",
+						"sms"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Sms",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{api}}/{{version}}/sms/1",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"{{version}}",
+						"sms",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sms List",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{api}}/{{version}}/sms",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"{{version}}",
+						"sms"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api",
+			"value": "http://127.0.0.1:8000/api",
+			"type": "string"
+		},
+		{
+			"key": "version",
+			"value": "v1",
+			"type": "string"
+		}
+	]
+}
