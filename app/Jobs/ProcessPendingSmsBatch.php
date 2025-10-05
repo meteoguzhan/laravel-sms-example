@@ -19,9 +19,8 @@ class ProcessPendingSmsBatch implements ShouldQueue
     {
         $items = $smsRepository->fetchPending($this->limit);
         foreach ($items as $sms) {
-            // Kuyruklanan bireysel gönderim işini tetikle
             SendSmsJob::dispatch($sms->id)->onQueue(config('sms.queue', 'default'));
-            // İşleniyor olarak işaretle
+
             $smsRepository->markProcessing($sms);
         }
     }

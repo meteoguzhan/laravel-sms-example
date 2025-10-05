@@ -26,9 +26,6 @@ class SmsService implements SmsServiceInterface
 
     /**
      * Send the given SMS via provider and return only response payload.
-     *
-     * On success, returns ['message' => 'Accepted', 'messageId' => '...'].
-     * On error, returns ['error' => '...'].
      */
     public function send(Sms $sms): SmsResponse
     {
@@ -39,7 +36,6 @@ class SmsService implements SmsServiceInterface
                     'message' => $sms->message,
                 ],
                 'timeout' => 10,
-                // Ensure no exceptions on 4xx/5xx even with custom Client
                 'http_errors' => false,
             ]);
 
@@ -55,14 +51,12 @@ class SmsService implements SmsServiceInterface
                     );
                 }
 
-                // Missing expected fields
                 $errorText = is_array($data)
                     ? ($data['error'] ?? SmsErrors::message(ErrorCode::ProviderUnexpectedResponse))
                     : SmsErrors::message(ErrorCode::ProviderUnexpectedResponse);
                 return SmsResponse::error($errorText);
             }
 
-            // Non-2xx handling
             if (is_array($data)) {
                 $error = $data['error'] ?? null;
                 if ($error) {
