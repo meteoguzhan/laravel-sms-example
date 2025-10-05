@@ -13,7 +13,7 @@ git clone https://github.com/meteoguzhan/laravel-sms-example.git
 ```
 You need to copy env file and rename it as .env
 ```bash
-cd symfony-todo-example && cp .env.example .env
+cd laravel-sms-example && cp .env.example .env
 ```
 After clone project, you need to install packages. (Make sure your system exists composer)
 ```bash
